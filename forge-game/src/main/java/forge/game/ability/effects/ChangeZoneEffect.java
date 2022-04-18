@@ -553,7 +553,7 @@ public class ChangeZoneEffect extends SpellAbilityEffect {
             // gameCard is LKI in that case, the card is not in game anymore
             // or the timestamp did change
             // this should check Self too
-            if (gameCard == null || !tgtC.equalsWithTimestamp(gameCard) || gameCard.isPhasedOut()) {
+            if (gameCard == null || !tgtC.equalsWithGameTimestamp(gameCard) || gameCard.isPhasedOut()) {
                 continue;
             }
             if (sa.usesTargeting() && !gameCard.canBeTargetedBy(sa)) {
@@ -718,7 +718,7 @@ public class ChangeZoneEffect extends SpellAbilityEffect {
                         game.getCombat().getBandOfAttacker(movedCard).setBlocked(false);
                         combatChanged = true;
                     }
-                    movedCard.setTimestamp(ts);
+                    movedCard.setGameTimestamp(ts);
                     if (sa.hasParam("AttachAfter") && movedCard.isAttachment()) {
                         CardCollection list = AbilityUtils.getDefinedCards(hostCard, sa.getParam("AttachAfter"), sa);
                         if (list.isEmpty()) {
@@ -1349,7 +1349,7 @@ public class ChangeZoneEffect extends SpellAbilityEffect {
                     }
                     movedCard = game.getAction().moveToPlay(c, c.getController(), sa, moveParams);
 
-                    movedCard.setTimestamp(ts);
+                    movedCard.setGameTimestamp(ts);
 
                     if (sa.hasParam("AttachAfter") && movedCard.isAttachment()) {
                         CardCollection list = AbilityUtils.getDefinedCards(source, sa.getParam("AttachAfter"), sa);
