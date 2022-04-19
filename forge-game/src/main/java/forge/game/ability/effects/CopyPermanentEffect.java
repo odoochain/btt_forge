@@ -230,9 +230,9 @@ public class CopyPermanentEffect extends TokenEffectBase {
                 if (c.isInstant() || c.isSorcery()) {
                     continue;
                 }
-
-                // if it only targets player, it already got all needed cards from defined
-                if (sa.usesTargeting() && !sa.getTargetRestrictions().canTgtPlayer() && !c.canBeTargetedBy(sa)) {
+                // TODO check stuff that copies LKI like Hofri
+                Card gameCard = game.getCardState(c, null);
+                if (gameCard == null || !c.equalsWithGameTimestamp(gameCard)) {
                     continue;
                 }
                 if (sa.hasParam("ForEach")) {
