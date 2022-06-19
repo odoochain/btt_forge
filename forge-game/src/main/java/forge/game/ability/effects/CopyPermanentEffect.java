@@ -135,6 +135,9 @@ public class CopyPermanentEffect extends TokenEffectBase {
         }
 
         for (final Player controller : controllers) {
+            if (!controller.isInGame()) {
+                continue;
+            }
             List<Card> tgtCards = Lists.newArrayList();
 
             if (sa.hasParam("ValidSupportedCopy")) {
@@ -230,11 +233,9 @@ public class CopyPermanentEffect extends TokenEffectBase {
                 if (c.isInstant() || c.isSorcery()) {
                     continue;
                 }
-                // TODO check stuff that copies LKI like Hofri
-                Card gameCard = game.getCardState(c, null);
-                if (gameCard == null || !c.equalsWithGameTimestamp(gameCard)) {
-                    continue;
-                }
+
+                // because copy should be able to copy LKI values, don't handle target and timestamp there
+
                 if (sa.hasParam("ForEach")) {
                     for (Player p : AbilityUtils.getDefinedPlayers(host, sa.getParam("ForEach"), sa)) {
                         Card proto = getProtoType(sa, c, controller);
