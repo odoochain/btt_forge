@@ -25,7 +25,20 @@
         <basedir.parent>./forge-gui</basedir.parent>
         <configSourceDirectory>src/main/config</configSourceDirectory>
     </properties>
-
+    <repositories>
+        <repository>
+            <id>local1</id>
+            <name>Local Repository</name>
+            <url>file://${project.basedir}/../repo</url>
+        </repository>
+        <!--        <repository>-->
+        <!--            <id>4thline-repo</id>-->
+        <!--            <url>http://4thline.org/m2</url>-->
+        <!--            <snapshots>-->
+        <!--                <enabled>false</enabled>-->
+        <!--            </snapshots>-->
+        <!--        </repository>-->
+    </repositories>
     <licenses>
         <license>
             <name>GPL 3</name>
