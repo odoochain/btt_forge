@@ -24,6 +24,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <basedir.parent>./forge-gui</basedir.parent>
         <configSourceDirectory>src/main/config</configSourceDirectory>
+        <maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
     </properties>
     <repositories>
         <repository>
