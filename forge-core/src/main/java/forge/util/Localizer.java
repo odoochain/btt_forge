@@ -101,6 +101,7 @@ public class Localizer {
 
         silent = false;
 
+        assert formatter != null;
         formatter.setLocale(english || forcedEnglish ? Locale.ENGLISH : locale);
 
         String formattedMessage = "CHAR ENCODING ERROR";
@@ -123,7 +124,7 @@ public class Localizer {
         }
 
         try {
-            formattedMessage = new String(formatter.format(syncEncodingMessageArguments).getBytes(detectedCharset), StandardCharsets.UTF_8);
+            formattedMessage = new String(formatter.format(syncEncodingMessageArguments).getBytes(detectedCharset), Charset.forName("UTF-8"));
         } catch(UnsupportedEncodingException ignored) {}
 
         return formattedMessage;

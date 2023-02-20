@@ -26,6 +26,7 @@
         <configSourceDirectory>src/main/config</configSourceDirectory>
         <maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
         <surefire.plugin.version>2.22.2</surefire.plugin.version>
+        <targetApi>11</targetApi>
     </properties>
     <repositories>
         <repository>

@@ -596,7 +596,6 @@ public class MultiLineLabelUI extends BasicLabelUI implements ComponentListener 
      * Static singleton {@link Segment} cache.
      *
      * @author Samuel Sjoberg
-     * @see javax.swing.text.SegmentCache
      */
     protected static final class SegmentCache {
 

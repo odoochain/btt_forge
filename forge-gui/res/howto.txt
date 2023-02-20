@@ -34,11 +34,11 @@ Legendary Cards
 Legendary cards are powerful cards that can be either creatures, enchantments, lands, artifacts, or planeswalkers.  These cards can only exist once in the battlefield, and if another copy of the legendary card is played, all copies of the card are destroyed and sent to the graveyard.
 
 
-Planeswalkers
+Planes-walkers
 
-There are relatively few planeswalkers available in the game and they have specific rules for their special abilities.
+There are relatively few planes-walkers available in the game and they have specific rules for their special abilities.
 
-You can only use one ability a turn.  A planeswalker can be attacked, but you can also block with your creatures.  For each 1 damage a planeswalker receives, you remove 1 counter.  When a planeswalker doesn't have any counters, it goes to the graveyard.
+You can only use one ability a turn.  A planes-walker can be attacked, but you can also block with your creatures.  For each 1 damage a planeswalker receives, you remove 1 counter.  When a planeswalker doesn't have any counters, it goes to the graveyard.
 
 
 Hybrid Mana and Multicolored Cards
