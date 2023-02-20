@@ -128,6 +128,7 @@ public class ComputerUtil {
 
         if (!sa.isCopied()) {
             sa.resetPaidHash();
+            sa.setPaidLife(0);
         }
 
         sa = GameActionUtil.addExtraKeywordCost(sa);
@@ -336,27 +337,30 @@ public class ComputerUtil {
         return true;
     }
 
-    public static final void playNoStack(final Player ai, SpellAbility sa, final Game game, final boolean effect) {
+    public static final boolean playNoStack(final Player ai, SpellAbility sa, final Game game, final boolean effect) {
         sa.setActivatingPlayer(ai, true);
         // TODO: We should really restrict what doesn't use the Stack
-        if (ComputerUtilCost.canPayCost(sa, ai, effect)) {
-            final Card source = sa.getHostCard();
-            if (sa.isSpell() && !source.isCopiedSpell()) {
-                sa.setHostCard(game.getAction().moveToStack(source, sa));
-            }
-
-            sa = GameActionUtil.addExtraKeywordCost(sa);
-
-            final Cost cost = sa.getPayCosts();
-            if (cost == null) {
-                ComputerUtilMana.payManaCost(ai, sa, effect);
-            } else {
-                final CostPayment pay = new CostPayment(cost, sa);
-                pay.payComputerCosts(new AiCostDecision(ai, sa, effect));
-            }
-
-            AbilityUtils.resolve(sa);
+        if (!ComputerUtilCost.canPayCost(sa, ai, effect)) {
+            return false;
         }
+
+        final Card source = sa.getHostCard();
+        if (sa.isSpell() && !source.isCopiedSpell()) {
+            sa.setHostCard(game.getAction().moveToStack(source, sa));
+        }
+
+        sa = GameActionUtil.addExtraKeywordCost(sa);
+
+        final Cost cost = sa.getPayCosts();
+        if (cost == null) {
+            ComputerUtilMana.payManaCost(ai, sa, effect);
+        } else {
+            final CostPayment pay = new CostPayment(cost, sa);
+            pay.payComputerCosts(new AiCostDecision(ai, sa, effect));
+        }
+
+        AbilityUtils.resolve(sa);
+        return true;
     }
 
     public static Card getCardPreference(final Player ai, final Card activate, final String pref, final CardCollection typeList) {
@@ -1795,8 +1799,7 @@ public class ComputerUtil {
                 && (saviourApi == ApiType.ChangeZone || saviourApi == ApiType.Pump || saviourApi == ApiType.PumpAll
                 || saviourApi == ApiType.Protection || saviourApi == ApiType.PutCounter || saviourApi == ApiType.PutCounterAll
                 || saviourApi == null)) {
-            final int dmg = -AbilityUtils.calculateAmount(source,
-                    topStack.getParam("NumDef"), topStack);
+            final int dmg = -AbilityUtils.calculateAmount(source, topStack.getParam("NumDef"), topStack);
             for (final Object o : objects) {
                 if (o instanceof Card) {
                     final Card c = (Card) o;
@@ -3157,4 +3160,14 @@ public class ComputerUtil {
         return remainingLife;
     }
 
+    public static boolean isETBprevented(Card c) {
+        final Map<AbilityKey, Object> repParams = AbilityKey.mapFromAffected(c);
+        // don't need to bother with real LKI since this is a passive check and the card isn't going anywhere
+        repParams.put(AbilityKey.CardLKI, c);
+        repParams.put(AbilityKey.Origin, c.getZone().getZoneType());
+        repParams.put(AbilityKey.Destination, ZoneType.Battlefield);
+        List<ReplacementEffect> list = c.getGame().getReplacementHandler().getReplacementList(ReplacementType.Moved, repParams, ReplacementLayer.CantHappen);
+        return !list.isEmpty();
+    }
+    
 }

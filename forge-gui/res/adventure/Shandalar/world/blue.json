@@ -47,11 +47,14 @@
 	"Rogue",
 	"Sea Monster",
 	"Tarkir Djinn",
-	"Doppelganger"
+	"Doppelganger",
+	"Pirate"
 ],
 "pointsOfInterest": [
 	"Blue Castle",
-	"Island Town",
+	"Island Town Generic",
+	"Island Town Identity",
+	"Island Town Tribal",
 	"Island Capital",
 	"NestU",
 	"MerfolkPool",
@@ -77,7 +80,9 @@
 	"CaveU1",
 	"CaveU2",
 	"CaveU3",
-	"CaveU4"
+	"CaveU4",
+	"Kiora Island",
+	"Jacehold"
 ],
 "structures": [
 	{

@@ -75,7 +75,7 @@ public class CostAdjustment {
         // Sort abilities to apply them in proper order
         for (Card c : cardsOnBattlefield) {
             for (final StaticAbility stAb : c.getStaticAbilities()) {
-                if (stAb.getParam("Mode").equals("RaiseCost")) {
+                if (stAb.checkMode("RaiseCost")) {
                     raiseAbilities.add(stAb);
                 }
             }
@@ -112,7 +112,6 @@ public class CostAdjustment {
         }
 
         final String scost = st.getParamOrDefault("Cost", "1");
-        Cost part = new Cost(scost, sa.isAbility());
         int count = 0;
 
         if (st.hasParam("ForEachShard")) {
@@ -155,8 +154,9 @@ public class CostAdjustment {
             // Amount 1 as default
             count = 1;
         }
-        for (int i = 0; i < count; ++i) {
-            cost.add(part);
+        if (count > 0) {
+            Cost part = new Cost(scost, sa.isAbility());
+            cost.mergeTo(part, count);
         }
     }
 
@@ -177,7 +177,7 @@ public class CostAdjustment {
                 originalCard.turnFaceDownNoUpdate();
                 isStateChangeToFaceDown = true;
             }
-        } // isSpell
+        }
 
         CardCollection cardsOnBattlefield = new CardCollection(game.getCardsIn(ZoneType.Battlefield));
         cardsOnBattlefield.addAll(game.getCardsIn(ZoneType.Stack));
@@ -191,10 +191,10 @@ public class CostAdjustment {
         // Sort abilities to apply them in proper order
         for (Card c : cardsOnBattlefield) {
             for (final StaticAbility stAb : c.getStaticAbilities()) {
-                if (stAb.getParam("Mode").equals("ReduceCost")) {
+                if (stAb.checkMode("ReduceCost")) {
                     reduceAbilities.add(stAb);
                 }
-                else if (stAb.getParam("Mode").equals("SetCost")) {
+                else if (stAb.checkMode("SetCost")) {
                     setAbilities.add(stAb);
                 }
             }

@@ -230,6 +230,10 @@ public enum FSkinImage implements FImage {
     QUEST_BIG_SWORD   (FSkinProp.ICO_QUEST_BIG_SWORD, SourceFile.ICONS),
     QUEST_BIG_BAG     (FSkinProp.ICO_QUEST_BIG_BAG, SourceFile.ICONS),
 
+    //adventure
+    MANASHARD         (FSkinProp.ICO_MANASHARD, SourceFile.ADVENTURE),
+    MENU_ADVLOGO      (FSkinProp.ICO_ADVLOGO, SourceFile.ADVENTURE),
+
     //menu icon
     MENU_GALAXY       (FSkinProp.ICO_MENU_GALAXY, SourceFile.ICONS),
     MENU_STATS        (FSkinProp.ICO_MENU_STATS, SourceFile.ICONS),
@@ -413,7 +417,10 @@ public enum FSkinImage implements FImage {
     FOIL_20     (FSkinProp.FOIL_20, SourceFile.OLD_FOILS),
 
     //COMMANDER
-    IMG_ABILITY_COMMANDER       (FSkinProp.IMG_ABILITY_COMMANDER, SourceFile.ABILITIES),
+    IMG_ABILITY_COMMANDER      (FSkinProp.IMG_ABILITY_COMMANDER, SourceFile.ABILITIES),
+
+    //TOXIC
+    IMG_ABILITY_TOXIC          (FSkinProp.IMG_ABILITY_TOXIC, SourceFile.ICONS),
     //ABILITY ICONS
     IMG_ABILITY_DEATHTOUCH     (FSkinProp.IMG_ABILITY_DEATHTOUCH, SourceFile.ABILITIES),
     IMG_ABILITY_DEFENDER       (FSkinProp.IMG_ABILITY_DEFENDER, SourceFile.ABILITIES),
@@ -484,7 +491,9 @@ public enum FSkinImage implements FImage {
         WATERMARKS(ForgeConstants.SPRITE_WATERMARK_FILE),
         DRAFTRANKS(ForgeConstants.SPRITE_DRAFTRANKS_FILE),
         CRACKS(ForgeConstants.SPRITE_CRACKS_FILE),
-        PLANAR_CONQUEST(ForgeConstants.SPRITE_PLANAR_CONQUEST_FILE);
+        PLANAR_CONQUEST(ForgeConstants.SPRITE_PLANAR_CONQUEST_FILE),
+        ADVENTURE(ForgeConstants.SPRITE_ADVENTURE_FILE);
+
 
         private final String filename;
 

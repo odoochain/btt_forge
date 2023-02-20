@@ -80,14 +80,37 @@ public abstract class SpellAbilityEffect {
         // Own description
         String stackDesc = params.get("StackDescription");
         if (stackDesc != null) {
+            String[] reps = null;
+            if (stackDesc.startsWith("REP")) {
+                reps = stackDesc.substring(4).split(" & ");
+                stackDesc = "SpellDescription";
+            }
             // by typing "SpellDescription" they want to bypass the Effect's string builder
             if ("SpellDescription".equalsIgnoreCase(stackDesc)) {
-            	if (params.get("SpellDescription") != null) {
-            		sb.append(CardTranslation.translateSingleDescriptionText(params.get("SpellDescription"), sa.getHostCard().getName()));
-            	}
-            	if (sa.getTargets() != null && !sa.getTargets().isEmpty()) {
-            		sb.append(" (Targeting: ").append(sa.getTargets()).append(")");
-            	}
+                if (params.containsKey("SpellDescription")) {
+                    String spellDesc = CardTranslation.translateSingleDescriptionText(params.get("SpellDescription"),
+                            sa.getHostCard().getName());
+
+                    int idx = spellDesc.indexOf("(");
+                    if (idx > 0) { //trim reminder text from StackDesc
+                        spellDesc = spellDesc.substring(0, spellDesc.indexOf("(") - 1);
+                    }
+
+                    if (reps != null) {
+                        for (String s : reps) {
+                            String[] rep = s.split("_",2);
+                            if (spellDesc.contains(rep[0])) {
+                                spellDesc = spellDesc.replaceFirst(rep[0], rep[1]);
+                            }
+                        }
+                        tokenizeString(sa, sb, spellDesc);
+                    } else {
+                        sb.append(spellDesc);
+                    }
+                }
+                if (sa.getTargets() != null && !sa.getTargets().isEmpty() && reps == null) {
+                    sb.append(" (Targeting: ").append(Lang.joinHomogenous(sa.getTargets())).append(")");
+                }
             } else if (!"None".equalsIgnoreCase(stackDesc)) { // by typing "none" they want to suppress output
                 tokenizeString(sa, sb, stackDesc);
             }
@@ -373,7 +396,7 @@ public abstract class SpellAbilityEffect {
         return saForget;
     }
 
-    protected static void addForgetOnMovedTrigger(final Card card, final String zone) {
+    public static void addForgetOnMovedTrigger(final Card card, final String zone) {
         String trig = "Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ " + zone + " | ExcludedDestinations$ Stack | Destination$ Any | TriggerZones$ Command | Static$ True";
 
         final Trigger parsedTrigger = TriggerHandler.parseTrigger(trig, card, true);
@@ -396,23 +419,6 @@ public abstract class SpellAbilityEffect {
         parsedTrigger.setOverridingAbility(AbilityFactory.getAbility(effect, card));
         final Trigger addedTrigger = card.addTrigger(parsedTrigger);
         addedTrigger.setIntrinsic(true);
-    }
-
-    protected static void addExileOnCastOrMoveTrigger(final Card card, final String zone) {
-        String trig = "Mode$ SpellCast | ValidCard$ Card.IsRemembered | TriggerZones$ Command | Static$ True";
-        String effect = "DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile";
-        final Trigger parsedTrigger = TriggerHandler.parseTrigger(trig, card, true);
-        parsedTrigger.setOverridingAbility(AbilityFactory.getAbility(effect, card));
-        final Trigger addedTrigger = card.addTrigger(parsedTrigger);
-        addedTrigger.setIntrinsic(true);
-        //Any on Destination will cause the effect to remove itself when cancelling to play the card
-        String trig2 = "Mode$ ChangesZone | ValidCard$ Card.IsRemembered | Origin$ " + zone + " | Destination$ Hand,Library,Graveyard,Battlefield,Command,Sideboard | TriggerZones$ Command | Static$ True";
-        String effect2 = "DB$ ChangeZone | Defined$ Self | Origin$ Command | Destination$ Exile";
-        final Trigger parsedTrigger2 = TriggerHandler.parseTrigger(trig2, card, true);
-        parsedTrigger2.setOverridingAbility(AbilityFactory.getAbility(effect2, card));
-        final Trigger addedTrigger2 = card.addTrigger(parsedTrigger2);
-        addedTrigger2.setIntrinsic(true);
-
     }
 
     protected static void addExileOnCounteredTrigger(final Card card) {
@@ -890,6 +896,24 @@ public abstract class SpellAbilityEffect {
         } else {
             options = activator.getAllOtherPlayers();
         }
-        return activator.getController().chooseSingleEntityForEffect(options, sa, Localizer.getInstance().getMessage("lblChoosePlayer") , null);
+        return activator.getController().chooseSingleEntityForEffect(options, sa, Localizer.getInstance().getMessage("lblChoosePlayer"), null);
+    }
+
+    public void handleExiledWith(final Card movedCard, final SpellAbility cause) {
+        Card exilingSource = cause.getHostCard();
+        // during replacement LKI might be used
+        if (cause.isReplacementAbility() && exilingSource.isLKI()) {
+            exilingSource = exilingSource.getGame().getCardState(exilingSource);
+        }
+        // only want this on permanents
+        if (exilingSource.isImmutable() || exilingSource.isInPlay()) {
+            exilingSource.addExiledCard(movedCard);
+        }
+        // if ability was granted use that source so they can be kept apart later
+        if (cause.isCopiedTrait()) {
+            exilingSource = cause.getOriginalHost();
+        }
+        movedCard.setExiledWith(exilingSource);
+        movedCard.setExiledBy(cause.getActivatingPlayer());
     }
 }

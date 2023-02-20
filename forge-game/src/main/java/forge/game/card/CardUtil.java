@@ -238,8 +238,14 @@ public final class CardUtil {
 
         newCopy.setCounters(Maps.newHashMap(in.getCounters()));
 
+        newCopy.setTributed(in.isTributed());
+        newCopy.setMonstrous(in.isMonstrous());
+        newCopy.setRenowned(in.isRenowned());
+
         newCopy.setColor(in.getColor().getColor());
         newCopy.setPhasedOut(in.getPhasedOut());
+
+        newCopy.setTapped(in.isTapped());
 
         newCopy.setDamageHistory(in.getDamageHistory());
         newCopy.setDamageReceivedThisTurn(in.getDamageReceivedThisTurn());
@@ -264,6 +270,15 @@ public final class CardUtil {
         newCopy.addImprintedCards(in.getImprintedCards());
         newCopy.setChosenCards(new CardCollection(in.getChosenCards()));
 
+        newCopy.setChosenType(in.getChosenType());
+        newCopy.setChosenType2(in.getChosenType2());
+        newCopy.setChosenName(in.getChosenName());
+        newCopy.setChosenName2(in.getChosenName2());
+        newCopy.setChosenColors(Lists.newArrayList(in.getChosenColors()));
+        if (in.hasChosenNumber()) {
+            newCopy.setChosenNumber(in.getChosenNumber());
+        }
+
         for (Table.Cell<Player, CounterType, Integer> cl : in.getEtbCounters()) {
             newCopy.addEtbCounter(cl.getColumnKey(), cl.getValue(), cl.getRowKey());
         }
@@ -277,6 +292,8 @@ public final class CardUtil {
         newCopy.setChangedCardTypesCharacterDefining(in.getChangedCardTypesCharacterDefiningTable());
         newCopy.setChangedCardNames(in.getChangedCardNames());
         newCopy.setChangedCardTraits(in.getChangedCardTraits());
+
+        newCopy.setStoredKeywords(in.getStoredKeywords(), true);
 
         newCopy.copyChangedTextFrom(in);
 
@@ -311,6 +328,7 @@ public final class CardUtil {
 
         newCopy.setExiledBy(in.getExiledBy());
         newCopy.setExiledWith(getLKICopy(in.getExiledWith(), cachedMap));
+        newCopy.addExiledCards(in.getExiledCards());
 
         if (in.getGame().getCombat() != null && in.isPermanent()) {
             newCopy.setCombatLKI(in.getGame().getCombat().saveLKI(newCopy)); 

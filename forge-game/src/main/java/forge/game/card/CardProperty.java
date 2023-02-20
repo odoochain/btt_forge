@@ -17,7 +17,6 @@ import forge.game.combat.AttackRequirement;
 import forge.game.combat.AttackingBand;
 import forge.game.combat.Combat;
 import forge.game.combat.CombatUtil;
-import forge.game.keyword.Keyword;
 import forge.game.mana.Mana;
 import forge.game.player.Player;
 import forge.game.spellability.OptionalCost;
@@ -371,15 +370,14 @@ public class CardProperty {
                     host = spellAbility.getHostCard();
                 }
             }
-
-            if (!card.getExiledWith().equals(host)) {
+            if (!source.hasExiledCard(card) || !card.getExiledWith().equalsWithTimestamp(host)) {
                 return false;
             }
         } else if (property.equals("ExiledWithEffectSource")) {
             if (card.getExiledWith() == null) {
                 return false;
             }
-            if (!card.getExiledWith().equals(source.getEffectSource())) {
+            if (!card.getExiledWith().equalsWithTimestamp(source.getEffectSource())) {
                 return false;
             }
         } else if (property.equals("EncodedWithSource")) {
@@ -741,6 +739,12 @@ public class CardProperty {
                     case "Commander":
                         final List<Card> cmdrs = sourceController.getCommanders();
                         for (Card cmdr : cmdrs) {
+                            cmdr = game.getCardState(cmdr);
+                            // if your commander is in a hidden zone or phased out
+                            // it's considered to have no creature types
+                            if (cmdr.getZone().getZoneType().isHidden() || cmdr.isPhasedOut()) {
+                                continue;
+                            }
                             if (card.sharesCreatureTypeWith(cmdr)) {
                                 return true;
                             }
@@ -861,7 +865,7 @@ public class CardProperty {
                     if (!(spellAbility instanceof SpellAbility)) {
                         System.out.println("Looking at TriggeredCard but no SA?");
                     } else {
-                        Card triggeredCard = ((Card) ((SpellAbility) spellAbility).getTriggeringObject(AbilityKey.Card));
+                        Card triggeredCard = ((Card) ((SpellAbility) spellAbility).getRootAbility().getTriggeringObject(AbilityKey.Card));
                         if (triggeredCard != null && card.sharesNameWith(triggeredCard)) {
                             return true;
                         }
@@ -1012,11 +1016,6 @@ public class CardProperty {
         } else if (property.startsWith("hasKeyword")) {
             // "withFlash" would find Flashback cards, add this to fix Mystical Teachings
             if (!card.hasKeyword(property.substring(10))) {
-                return false;
-            }
-        } else if (property.startsWith("withFlashback")) {
-            boolean fb = card.hasKeyword(Keyword.FLASHBACK);
-            if (!fb) {
                 return false;
             }
         } else if (property.startsWith("with")) {
@@ -1708,6 +1707,10 @@ public class CardProperty {
             if (!game.getPhaseHandler().isPlayerTurn(controller)) return false;
             return CombatUtil.couldAttackButNotAttacking(combat, card);
         } else if (property.startsWith("kicked")) {
+            // CR 607.2i check cost is linked
+            if (AbilityUtils.isUnlinkedFromCastSA(spellAbility, card)) {
+                return false;
+            }
             if (property.equals("kicked")) {
                 if (card.getKickerMagnitude() == 0) {
                     return false;
@@ -1716,10 +1719,6 @@ public class CardProperty {
                 String s = property.split("kicked ")[1];
                 if ("1".equals(s) && !card.isOptionalCostPaid(OptionalCost.Kicker1)) return false;
                 if ("2".equals(s) && !card.isOptionalCostPaid(OptionalCost.Kicker2)) return false;
-            }
-        } else if (property.startsWith("notkicked")) {
-            if (card.getKickerMagnitude() > 0) {
-                return false;
             }
         } else if (property.startsWith("pseudokicked")) {
             if (property.equals("pseudokicked")) {

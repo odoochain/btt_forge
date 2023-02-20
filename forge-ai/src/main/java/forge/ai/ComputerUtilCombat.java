@@ -919,7 +919,7 @@ public class ComputerUtilCombat {
         final CardCollectionView cardList = CardCollection.combine(game.getCardsIn(ZoneType.Battlefield), game.getCardsIn(ZoneType.Command));
         for (final Card card : cardList) {
             for (final StaticAbility stAb : card.getStaticAbilities()) {
-                if (!stAb.getParam("Mode").equals("Continuous")) {
+                if (!stAb.checkMode("Continuous")) {
                     continue;
                 }
                 if (!stAb.hasParam("Affected") || !stAb.getParam("Affected").contains("blocking")) {
@@ -1208,12 +1208,14 @@ public class ComputerUtilCombat {
             theTriggers.addAll(blocker.getTriggers());
         }
 
+        // TODO consider Exert + Enlist
+
         // look out for continuous static abilities that only care for attacking creatures
         if (!withoutCombatStaticAbilities) {
             final CardCollectionView cardList = CardCollection.combine(game.getCardsIn(ZoneType.Battlefield), game.getCardsIn(ZoneType.Command));
             for (final Card card : cardList) {
                 for (final StaticAbility stAb : card.getStaticAbilities()) {
-                    if (!stAb.getParam("Mode").equals("Continuous")) {
+                    if (!stAb.checkMode("Continuous")) {
                         continue;
                     }
                     if (!stAb.hasParam("Affected") || !stAb.getParam("Affected").contains("attacking")) {

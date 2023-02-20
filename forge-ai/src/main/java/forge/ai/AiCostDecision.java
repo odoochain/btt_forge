@@ -239,6 +239,13 @@ public class AiCostDecision extends CostDecisionMakerBase {
     }
 
     @Override
+    public PaymentDecision visit(final CostEnlist cost) {
+        CardCollection choices = CostEnlist.getCardsForEnlisting(player);
+        CardLists.sortByPowerDesc(choices);
+        return choices.isEmpty() ? null : PaymentDecision.card(choices.getFirst());
+    }
+
+    @Override
     public PaymentDecision visit(CostFlipCoin cost) {
         int c = cost.getAbilityAmount(ability);
         return PaymentDecision.number(c);
@@ -258,7 +265,8 @@ public class AiCostDecision extends CostDecisionMakerBase {
 
         int c = cost.getAbilityAmount(ability);
 
-        final CardCollection typeList = CardLists.getValidCards(player.getGame().getCardsIn(ZoneType.Battlefield), cost.getType().split(";"), player, source, ability);
+        CardCollection typeList = CardLists.getValidCards(player.getGame().getCardsIn(ZoneType.Battlefield), cost.getType().split(";"), player, source, ability);
+        typeList = CardLists.filter(typeList, crd -> crd.canBeControlledBy(player));
 
         if (typeList.size() < c) {
             return null;
@@ -782,6 +790,11 @@ public class AiCostDecision extends CostDecisionMakerBase {
 
     @Override
     public PaymentDecision visit(CostUntap cost) {
+        return PaymentDecision.number(0);
+    }
+
+    @Override
+    public PaymentDecision visit(CostPayShards cost) {
         return PaymentDecision.number(0);
     }
 
