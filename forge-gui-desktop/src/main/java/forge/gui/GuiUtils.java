@@ -17,23 +17,14 @@
  */
 package forge.gui;
 
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-import javax.swing.JSeparator;
-import javax.swing.KeyStroke;
-
 import forge.localinstance.properties.ForgePreferences.FPref;
 import forge.model.FModel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
 /**
  * <p>
@@ -41,7 +32,7 @@ import forge.model.FModel;
  * </p>
  *
  * @author Forge
- * @version $Id: GuiUtils.java 24769 2014-02-09 13:56:04Z Hellfish $
+ * @version $Id: GuiUtils.java 24769 2014-02-09 13:56:04Z $
  */
 public final class GuiUtils {
 
@@ -71,9 +62,9 @@ public final class GuiUtils {
             System.err.println("GuiUtils > newFont: can't find \"" + filename + "\"");
         }
 
-        if ("ja-JP".equals(FModel.getPreferences().getPref(FPref.UI_LANGUAGE)) && !ttf.canDisplay('鍮') ||
-            "zh-CN".equals(FModel.getPreferences().getPref(FPref.UI_LANGUAGE)) && !ttf.canDisplay('鹫')) {
-            // Use the system default font if can't display the above character
+        if ("ja-JP".equals(FModel.getPreferences().getPref(FPref.UI_LANGUAGE)) && !Objects.requireNonNull(ttf).canDisplay('鍮') ||
+            "zh-CN".equals(FModel.getPreferences().getPref(FPref.UI_LANGUAGE)) && !Objects.requireNonNull(ttf).canDisplay('鹫')) {
+            // Use the system default font if you can't display the above character
             ttf = new JLabel().getFont();
         }
 
@@ -101,12 +92,9 @@ public final class GuiUtils {
             label = "<html>" + "<div style='height: " + itemHeight + "px; margin-top: 6px;'>" + label.substring(6, label.length() - 7) + "</div></html>";
         }
         final JMenuItem item = new JMenuItem(label);
-        item.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent arg0) {
-                if (null != onClick) {
-                    onClick.run();
-                }
+        item.addActionListener(arg0 -> {
+            if (null != onClick) {
+                onClick.run();
             }
         });
         item.setEnabled(enabled);
