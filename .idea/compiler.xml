@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="forge-ai" />
+        <module name="forge-gui" />
+        <module name="forge-gui-desktop" />
+        <module name="forge-game" />
+        <module name="forge-gui-mobile" />
+        <module name="forge-lda" />
+        <module name="forge-adventure" />
+        <module name="forge-gui-mobile-dev" />
+        <module name="forge-gui-android" />
+        <module name="forge-core" />
+        <module name="forge-gui-ios" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="forge-adventure" options="" />
+      <module name="forge-ai" options="" />
+      <module name="forge-core" options="" />
+      <module name="forge-game" options="" />
+      <module name="forge-gui" options="" />
+      <module name="forge-gui-android" options="" />
+      <module name="forge-gui-desktop" options="" />
+      <module name="forge-gui-ios" options="" />
+      <module name="forge-gui-mobile" options="" />
+      <module name="forge-gui-mobile-dev" options="" />
+      <module name="forge-lda" options="" />
+    </option>
+  </component>
+</project>

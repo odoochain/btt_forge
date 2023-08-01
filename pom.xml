@@ -4,7 +4,7 @@
     <artifactId>forge</artifactId>
     <packaging>pom</packaging>
     <name>Forge Parent</name>
-    <version>1.6.58-SNAPSHOT</version>
+    <version>1.6.55-SNAPSHOT</version>
 
     <description>
         Forge lets you play the card game Magic: The Gathering against a computer opponent using all of the rules.
@@ -24,9 +24,24 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <basedir.parent>./forge-gui</basedir.parent>
         <configSourceDirectory>src/main/config</configSourceDirectory>
-        <maven.compiler.release>8</maven.compiler.release>
+        <maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
+        <surefire.plugin.version>2.22.2</surefire.plugin.version>
+        <targetApi>11</targetApi>
     </properties>
-
+    <repositories>
+        <repository>
+            <id>local1</id>
+            <name>Local Repository</name>
+            <url>file://${project.basedir}/../repo</url>
+        </repository>
+        <!--        <repository>-->
+        <!--            <id>4thline-repo</id>-->
+        <!--            <url>http://4thline.org/m2</url>-->
+        <!--            <snapshots>-->
+        <!--                <enabled>false</enabled>-->
+        <!--            </snapshots>-->
+        <!--        </repository>-->
+    </repositories>
     <licenses>
         <license>
             <name>GPL 3</name>
@@ -97,15 +112,35 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.0.0-M2</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-versions</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>[3.5.9,)</version>
+                                    </requireMavenVersion>
+                                    <requireJavaVersion>
+                                        <version>[1.8,)</version>
+                                    </requireJavaVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
 
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
+                    <version>3.8.1</version>
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
+                        <encoding>UTF-8</encoding>
                     </configuration>
                 </plugin>
 
@@ -125,7 +160,14 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.16</version>
+                    <version>${surefire.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
 
                 <plugin>
@@ -143,25 +185,13 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.4</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.3</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
                     <version>1.7</version>
                 </plugin>
 
                 <plugin>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>${maven-assembly-plugin.version}</version>
                 </plugin>
 
                 <plugin>
@@ -262,6 +292,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M2</version>
                 <executions>
                     <execution>
                         <id>enforce-versions</id>
@@ -272,12 +303,11 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>[3.5.9,)</version>
+                                    <version>[3.1.1,)</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
                                     <version>[1.8,)</version>
                                 </requireJavaVersion>
-                                <requirePluginVersions />
                             </rules>
                         </configuration>
                     </execution>
