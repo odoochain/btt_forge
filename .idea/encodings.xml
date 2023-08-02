@@ -5,17 +5,26 @@
     <file url="file://$PROJECT_DIR$/forge-adventure" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-adventure/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-ai/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/forge-ai/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/forge-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-game/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/forge-game/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-gui-android/filters" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-gui-android/src" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-gui-desktop/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/forge-gui-desktop/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/forge-gui-ios/filters" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-gui-ios/src" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-gui-mobile-dev" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-gui-mobile-dev/src" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-gui-mobile/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/forge-gui-mobile/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-gui/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-gui/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/forge-lda/filters" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-lda/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
 </project>
