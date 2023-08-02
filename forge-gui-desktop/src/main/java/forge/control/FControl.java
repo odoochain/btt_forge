@@ -259,7 +259,7 @@ public enum FControl implements KeyEventDispatcher {
         FView.SINGLETON_INSTANCE.getLpnDocument().addComponentListener(SResizingUtil.getWindowResizeListener());
 
         setGlobalKeyboardHandler();
-        FView.SINGLETON_INSTANCE.setSplashProgessBarMessage(localizer.getMessage("lblOpeningMainWindow"));
+        FView.SINGLETON_INSTANCE.setSplashProgessBarMessage(localizer.getMessage("lblOpeningMainWindow"));  //打开主窗口
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

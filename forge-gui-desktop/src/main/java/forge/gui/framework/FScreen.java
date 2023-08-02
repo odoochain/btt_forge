@@ -26,6 +26,7 @@ import forge.view.FView;
  * Definitions for Forge screens
  */
 public class FScreen {
+    //主页
     public static final FScreen HOME_SCREEN = new FScreen(
             VHomeUI.SINGLETON_INSTANCE,
             CHomeUI.SINGLETON_INSTANCE,
@@ -40,6 +41,16 @@ public class FScreen {
             CWorkshopUI.SINGLETON_INSTANCE,
             "lblWorkshop",
             FSkin.getIcon(FSkinProp.ICO_SETTINGS), //TODO: Create icon for workshop screen
+            false,
+            "lblBacktoHome",
+            ForgeConstants.WORKSHOP_LAYOUT_FILE,
+            false);
+
+    public static final FScreen WORKSHOP_SCREEN2 = new FScreen(
+            VWorkshopUI.SINGLETON_INSTANCE,
+            CWorkshopUI.SINGLETON_INSTANCE,
+            "lblWorkshop",
+            FSkin.getIcon(FSkinProp.ICO_SETTINGS), //TODO: Create icon for 八字
             false,
             "lblBacktoHome",
             ForgeConstants.WORKSHOP_LAYOUT_FILE,

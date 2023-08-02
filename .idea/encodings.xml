@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/filters" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-adventure" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-adventure/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-ai/src/main/java" charset="UTF-8" />
@@ -24,7 +25,10 @@
     <file url="file://$PROJECT_DIR$/forge-gui/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-lda/filters" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/forge-lda/src" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../immartian-all/swe-java-lib/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../immartian-all/swe-java-lib/src/main/resources" charset="UTF-8" />
   </component>
 </project>

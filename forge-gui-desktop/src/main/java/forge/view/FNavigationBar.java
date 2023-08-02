@@ -99,6 +99,7 @@ public class FNavigationBar extends FTitleBarBase {
         if (ForgePreferences.DEV_MODE) {
             //TODO: Make Workshop available outside developer mode when custom cards supported
             addNavigationTab(FScreen.WORKSHOP_SCREEN);
+            addNavigationTab(FScreen.WORKSHOP_SCREEN2);
         }
 
         super.addControls();
@@ -433,7 +434,7 @@ public class FNavigationBar extends FTitleBarBase {
             });
         }
 
-        /** @param isSelected0 &emsp; boolean */
+        /** @param selected0 &emsp; boolean */
         private void setSelected(final boolean selected0) {
             if (this.selected == selected0) { return; }
             this.selected = selected0;
@@ -499,7 +500,7 @@ public class FNavigationBar extends FTitleBarBase {
                 addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(final MouseEvent e) {
-                        if (!CloseButton.this.isEnabled()) { return; }
+                        if (!NavigationTab.CloseButton.this.isEnabled()) { return; }
                         if (SwingUtilities.isLeftMouseButton(e)) {
                             pressed = true;
                             repaintSelf();
@@ -517,7 +518,7 @@ public class FNavigationBar extends FTitleBarBase {
                     }
                     @Override
                     public void mouseEntered(final MouseEvent e) {
-                        if (!CloseButton.this.isEnabled()) { return; }
+                        if (!NavigationTab.CloseButton.this.isEnabled()) { return; }
                         hovered = true;
                         repaintSelf();
                     }

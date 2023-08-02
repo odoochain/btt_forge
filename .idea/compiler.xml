@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="forge-ai" />
         <module name="forge-gui" />
+        <module name="swe" />
         <module name="forge-gui-desktop" />
         <module name="forge-game" />
         <module name="forge-gui-mobile" />

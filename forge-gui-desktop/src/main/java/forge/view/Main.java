@@ -86,15 +86,15 @@ public final class Main {
         System.exit(0);
     }
 
-    @SuppressWarnings("deprecation")
-	@Override
-    protected void finalize() throws Throwable {
-        try {
-            ExceptionHandler.unregisterErrorHandling();
-        } finally {
-            super.finalize();
-        }
-    }
+//    @SuppressWarnings("deprecation")
+//	@Override
+//    protected void finalize() throws Throwable {
+//        try {
+//            ExceptionHandler.unregisterErrorHandling();
+//        } finally {
+//            super.finalize();
+//        }
+//    }
 
     // disallow instantiation
     private Main() { }

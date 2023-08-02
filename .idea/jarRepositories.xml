@@ -7,14 +7,14 @@
       <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="central" />
-      <option name="name" value="Central Repository" />
-      <option name="url" value="https://repo.maven.apache.org/maven2" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="jitpack.io" />
       <option name="name" value="jitpack.io" />
       <option name="url" value="https://jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-gui-mobile-dev/../repo" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="local1" />
@@ -24,22 +24,7 @@
     <remote-repository>
       <option name="id" value="local1" />
       <option name="name" value="Local Repository" />
-      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="local1" />
-      <option name="name" value="Local Repository" />
-      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-gui-desktop/../repo" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="local1" />
-      <option name="name" value="Local Repository" />
-      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-gui-android/../repo" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="local1" />
-      <option name="name" value="Local Repository" />
-      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-gui-mobile/../repo" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-gui-ios/../repo" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="local1" />
@@ -47,19 +32,24 @@
       <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-ai/../repo" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="gdx-nightlies" />
-      <option name="name" value="gdx-nightlies" />
-      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="central" />
-      <option name="name" value="Maven Central repository" />
-      <option name="url" value="https://repo1.maven.org/maven2" />
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-gui-android/../repo" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="local1" />
       <option name="name" value="Local Repository" />
-      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-core/../repo" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-gui-desktop/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-gui/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-core/../repo" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="local1" />
@@ -69,22 +59,17 @@
     <remote-repository>
       <option name="id" value="local1" />
       <option name="name" value="Local Repository" />
-      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-game/../repo" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="local1" />
-      <option name="name" value="Local Repository" />
       <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-lda/../repo" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="local1" />
       <option name="name" value="Local Repository" />
-      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-gui/../repo" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-gui-mobile-dev/../repo" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="local1" />
       <option name="name" value="Local Repository" />
-      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-gui-mobile-dev/../repo" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-adventure/../repo" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="gdx-nightlies" />
@@ -107,14 +92,89 @@
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="4thline-repo" />
-      <option name="name" value="4thline-repo" />
-      <option name="url" value="http://4thline.org/m2" />
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-lda/../repo" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="jitpack.io" />
       <option name="name" value="jitpack.io" />
       <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-gui-desktop/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-gui-android/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-gui-mobile/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="gdx-nightlies" />
+      <option name="name" value="gdx-nightlies" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-core/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-game/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-ai/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-game/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz\forge-gui-mobile/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_forge\forge-gui/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local1" />
+      <option name="name" value="Local Repository" />
+      <option name="url" value="file://D:\Documents\Z-xiaozheng\btt_xxz/../repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="4thline-repo" />
+      <option name="name" value="4thline-repo" />
+      <option name="url" value="http://4thline.org/m2" />
     </remote-repository>
   </component>
 </project>
