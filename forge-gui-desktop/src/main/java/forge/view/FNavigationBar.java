@@ -99,7 +99,7 @@ public class FNavigationBar extends FTitleBarBase {
         if (ForgePreferences.DEV_MODE) {
             //TODO: Make Workshop available outside developer mode when custom cards supported
             addNavigationTab(FScreen.WORKSHOP_SCREEN);
-            addNavigationTab(FScreen.WORKSHOP_SCREEN2);
+            addNavigationTab(FScreen.ZENMAN_SCREEN);
         }
 
         super.addControls();

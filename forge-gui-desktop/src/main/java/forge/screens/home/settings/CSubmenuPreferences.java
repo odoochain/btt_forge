@@ -336,7 +336,14 @@ public enum CSubmenuPreferences implements ICDoc {
             }
         }
     }
-
+    private void resetZenmanLayout() {
+        final String userPrompt =localizer.getMessage("AresetWorkshopLayout");
+        if (FOptionPane.showConfirmDialog(userPrompt, localizer.getMessage("TresetWorkshopLayout"))) {
+            if (FScreen.WORKSHOP_SCREEN.deleteLayoutFile()) {
+                FOptionPane.showMessageDialog(localizer.getMessage("OKresetWorkshopLayout"));
+            }
+        }
+    }
     private void resetMatchScreenLayout() {
         final String userPrompt =localizer.getMessage("AresetMatchScreenLayout");
         if (FOptionPane.showConfirmDialog(userPrompt, localizer.getMessage("TresetMatchScreenLayout"))) {

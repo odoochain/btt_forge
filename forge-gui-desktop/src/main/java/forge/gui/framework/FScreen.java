@@ -16,6 +16,8 @@ import forge.screens.match.CMatchUI;
 import forge.screens.match.VMatchUI;
 import forge.screens.workshop.CWorkshopUI;
 import forge.screens.workshop.VWorkshopUI;
+import forge.screens.zenman.CzenmanUI;
+import forge.screens.zenman.VzenmanUI;
 import forge.toolbox.FOptionPane;
 import forge.toolbox.FSkin;
 import forge.toolbox.FSkin.SkinImage;
@@ -46,10 +48,10 @@ public class FScreen {
             ForgeConstants.WORKSHOP_LAYOUT_FILE,
             false);
 
-    public static final FScreen WORKSHOP_SCREEN2 = new FScreen(
-            VWorkshopUI.SINGLETON_INSTANCE,
-            CWorkshopUI.SINGLETON_INSTANCE,
-            "lblWorkshop",
+    public static final FScreen ZENMAN_SCREEN = new FScreen(
+            VzenmanUI.SINGLETON_INSTANCE,
+            CzenmanUI.SINGLETON_INSTANCE,
+            "lblZenman",
             FSkin.getIcon(FSkinProp.ICO_SETTINGS), //TODO: Create icon for 八字
             false,
             "lblBacktoHome",
