@@ -74,6 +74,8 @@ public enum ItemManagerConfig {
             null, null, 2, 1),
     WORKSHOP_CATALOG(SColumnUtil.getCatalogDefaultColumns(true), true, true, false,
             null, null, 4, 0),
+    ZENMAN_CATALOG(SColumnUtil.getCatalogDefaultColumns(true), true, true, false,
+            null, null, 4, 0),
     DECK_VIEWER(SColumnUtil.getDeckViewerDefaultColumns(), false, false, false,
             GroupDef.DEFAULT, ColumnDef.CMC, 4, 1),
     CONSTRUCTED_DECKS(SColumnUtil.getDecksDefaultColumns(true, true), false, false, false,

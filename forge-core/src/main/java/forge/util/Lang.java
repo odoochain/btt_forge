@@ -4,19 +4,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import forge.util.lang.*;
 import org.apache.commons.lang3.StringUtils;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import forge.util.lang.LangChinese;
-import forge.util.lang.LangEnglish;
-import forge.util.lang.LangGerman;
-import forge.util.lang.LangItalian;
-import forge.util.lang.LangJapanese;
-import forge.util.lang.LangSpanish;
-import forge.util.lang.LangFrench;
 
 /**
  * Static library containing language-related utility methods.
@@ -41,6 +34,8 @@ public abstract class Lang {
             instance = new LangItalian();
         } else if (language.equals("zh")) {
             instance = new LangChinese();
+        } else if (language.equals("zh_CN")) {
+            instance = new LangChinese_CN();
         } else if (language.equals("ja")) {
             instance = new LangJapanese();
         } else if (language.equals("fr")) {
